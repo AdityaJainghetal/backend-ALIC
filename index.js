@@ -40,6 +40,12 @@ const JudementRoute = require("./Routes/judementRoute")
 const EventRoute = require("./Routes/EventRoute");
 const URLRoute = require("./Routes/URLRoute");
 const AdminRoute = require("./Routes/Admin/AdminRoute")
+const subacategoryRouter = require("./Routes/subcategory.routes");
+const judementRouter = require("./Routes/JudementRoute/judementRoute")
+const blogRouter = require("./Routes/BlogCategoryRoute");
+const DiscountRoute = require("./Routes/DiscountRoute")
+const FAQRoute = require("./Routes/FAQ/faqRoute")
+
 // app.use("/uploads", express.static("uploads"));
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
@@ -59,6 +65,11 @@ app.use(bodyparser.json())
  app.use("/api", CourseRoute)
  app.use("/success", AllSuccessRoute)
  app.use('/category', categoryRouter)
+ app.use('/judementcategory',judementRouter)
+ app.use('/blogcategory',blogRouter)
+
+
+ app.use('/subcategory', subacategoryRouter);
  app.use('/enquiry', EnquiryRoute)
  app.use("/contact", ContactRoute)
  app.use("/enroll", EnrollRoute)
@@ -74,7 +85,10 @@ app.use(bodyparser.json())
  app.use("/judement", JudementRoute)
  app.use("/event", EventRoute);
  app.use("/url", URLRoute)
- app.use("/admin", AdminRoute)
+ app.use("/admin", AdminRoute);
+ app.use("/discount",DiscountRoute)
+ app.use("/faq", FAQRoute)
+
 
 
 

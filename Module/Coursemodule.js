@@ -58,6 +58,7 @@ const courseSchema = new mongoose.Schema({
   Review: {
     type: String,
   },
+   homeVisibility: { type: Boolean, default: false },
   TrainerName: {
     type: String,
   },

@@ -13,9 +13,9 @@ const judgementSchema = new mongoose.Schema({
   subTitle: {
     type: String,
   },
-     category: {
+     judementCategory: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Category"
+      ref: "judementCategory"
     },
   
   description: {

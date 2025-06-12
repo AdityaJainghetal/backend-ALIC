@@ -180,13 +180,62 @@ const QueryDelete = async(req, res)=>{
 
 const getAllCourse = async (req, res) => {
     try {
-        const products = await Course.find().populate("category");
+        const products = await Course.find({ homeVisibility: true }).populate("category");
         res.status(200).json(products);
     } catch (error) {
         console.error("Error fetching products:", error);
         res.status(500).json({ message: error.message });
     }
 };
+
+
+const getAllCoursedisplay = async (req, res) => {
+ 
+    try {
+        const productsall = await Course.find().populate("category");
+        res.status(200).json(productsall);
+    } catch (error) {
+        console.error("Error fetching products:", error); // Check your server logs!
+        res.status(500).json({ message: error.message });
+    }
+
+};
+
+
+
+
+const getAllCourseHome  = async (req, res) => {
+  try {
+    const product = await Course.find({ homeVisibility: true })
+      .populate("category");
+      
+    res.status(200).json(product);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+
+const getproducthome = async (req, res) => {
+  const { homeVisibility } = req.body;
+
+  // Create a new variable to toggle
+  const newHomeVisibility = homeVisibility;
+
+  try {
+    console.log(homeVisibility,"sdafsa")
+    const updatedProduct = await Course.findByIdAndUpdate(
+      req.params.id,
+      { homeVisibility: homeVisibility },
+      { new: true }
+    );
+    res.json(updatedProduct);
+  } catch (error) {
+    res.status(500).json({ message: 'Error updating home visibility' });
+  }
+};
+
+
 
 const getProductById = async (req, res) => {
   try {
@@ -257,6 +306,8 @@ module.exports = {
      getCourseById,
      getCoursesByCategory,
      editDisplay,
-     editDataSave
-     
+     editDataSave,
+     getAllCourseHome,
+     getproducthome,
+     getAllCoursedisplay
 }

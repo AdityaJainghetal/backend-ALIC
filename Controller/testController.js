@@ -132,21 +132,6 @@ const getCourseWithTestModules = async (req, res) => {
 
 
 
-// const editDisplay = async (req, res) => {
-//   try {
-//     const { id } = req.query;
-//     if (!id) return res.status(400).json({ message: "ID is required." });
-
-//     const record = await Course.findById(id).populate('category');
-//     if (!record) return res.status(404).json({ message: "Record not found." });
-
-//     res.status(200).json(record);
-//   } catch (error) {
-//     console.error("Error fetching record for edit:", error);
-//     res.status(500).json({ message: error.message });
-//   }
-// };
-
 
 
 const editDisplay = async (req, res) => {

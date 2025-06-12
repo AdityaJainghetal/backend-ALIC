@@ -50,7 +50,7 @@ const judegemntcreate = async (req, res) => {
       subTitle,
       description,
       lastDate: parsedLastDate || undefined,
-      category,
+      judementCategory:category,
       publicerName,
       images: uploadedImages,
       // add size if you want to save it and schema supports it
@@ -67,7 +67,7 @@ const judegemntcreate = async (req, res) => {
 
 const judegementdiplay= async (req, res) => {
     try {
-        const products = await JudgementModel.find().populate("category");
+        const products = await JudgementModel.find().populate("judementCategory");
         res.status(200).json(products);
     } catch (error) {
         console.error("Error fetching products:", error);
@@ -120,7 +120,7 @@ const getProductById = async (req, res) => {
 
 const getCourseById = async (req, res) => {
   try {
-    const course = await JudgementModel.findById(req.params.id).populate("category");
+    const course = await JudgementModel.findById(req.params.id).populate("judementCategory");
     if (!course) {
       return res.status(404).json({ message: "Course not found" });
     }

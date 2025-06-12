@@ -12,6 +12,13 @@ const BlogSchema = new mongoose.Schema({
           URL : {
             type: String
         },
+
+   BlogCategory: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "BlogCategory"
+    },
+  
+
       author:{
          type:String
       },

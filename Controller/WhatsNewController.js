@@ -121,6 +121,18 @@ const WhatsNewById = async (req, res) => {
   }
 };
 
+const getMemberById = async (req, res) => {
+  try {
+    const product = await Course.findById(req.params.id);
+    if (!product) {
+      return res.status(404).json({ message: 'Member not found' });
+    }
+    res.status(200).json(product);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 const editDisplay = async (req, res) => {
   try {
     const { id } = req.query;
@@ -195,5 +207,6 @@ module.exports = {
   WhatsNewDelete,
   WhatsNewById,
   editDisplay,
-    editDataSave
+    editDataSave,
+    getMemberById
 };

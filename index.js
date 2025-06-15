@@ -45,7 +45,7 @@ const judementRouter = require("./Routes/JudementRoute/judementRoute")
 const blogRouter = require("./Routes/BlogCategoryRoute");
 const DiscountRoute = require("./Routes/DiscountRoute")
 const FAQRoute = require("./Routes/FAQ/faqRoute")
-
+const subsubRoute = require("./Routes/subsubRoute")
 // app.use("/uploads", express.static("uploads"));
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
@@ -87,7 +87,8 @@ app.use(bodyparser.json())
  app.use("/url", URLRoute)
  app.use("/admin", AdminRoute);
  app.use("/discount",DiscountRoute)
- app.use("/faq", FAQRoute)
+ app.use("/faq", FAQRoute);
+ app.use("/subsubcategory", subsubRoute)
 
 
 

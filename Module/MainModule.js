@@ -24,6 +24,15 @@ const MainSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Category"
   },
+     subCategory: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Subcategory"
+    },
+  
+       subsubCategory: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Subsubcategory"
+    },
 
   CourseDescription: {
     type: String,

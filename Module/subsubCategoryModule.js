@@ -7,7 +7,13 @@ var subcategorySchema = new mongoose.Schema({
         // ref: "Subcategory"'
 
         type:String
-    }
+    },
+        images: [
+        {
+            type: String
+        }
+      
+    ],
 });
 
 //Export the model

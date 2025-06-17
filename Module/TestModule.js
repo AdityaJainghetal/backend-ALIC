@@ -8,6 +8,7 @@ const preSchema = new mongoose.Schema({
     }
 
   ],
+  
   Price: {
     type: Number,
   },

@@ -237,6 +237,7 @@ const imagekit = require("../Utils/imageKit");
 
 // Save Course with all category levels
 const CourseSave = async (req, res) => {
+  console.log(req.body, 'request body')
   try {
     const {
       Price,
@@ -245,8 +246,8 @@ const CourseSave = async (req, res) => {
       CourseDescription,
       LastDate,
       category,
-      subCategory,
-      subsubCategory,
+      subcategory,
+      subsubcategory,
       size,
     } = req.body;
 
@@ -285,8 +286,8 @@ const CourseSave = async (req, res) => {
       CourseDescription,
       LastDate: parsedLastDate,
       category,
-      subCategory,
-      subsubCategory,
+      subCategory: subcategory,
+      subsubCategory: subsubcategory,
       size: parsedSize,
       images: uploadedImages,
     });

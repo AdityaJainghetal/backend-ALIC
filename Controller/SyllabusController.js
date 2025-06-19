@@ -270,7 +270,8 @@ const WhatsNewSave = async (req, res) => {
 
 const getWhatsNew = async (req, res) => {
   try {
-    const courses = await Course.find().populate("category");
+    const courses = await Course.find().populate("category")
+            
     res.status(200).json({
       success: true,
       data: courses,
@@ -311,7 +312,8 @@ const WhatsNewDelete = async (req, res) => {
 
 const WhatsNewById = async (req, res) => {
   try {
-    const syllabus = await Course.findById(req.params.id).populate('category');
+    const syllabus = await Course.findById(req.params.id).populate("category")
+         
     if (!syllabus) return res.status(404).json({ message: 'Syllabus not found' });
     res.json(syllabus);
   } catch (err) {
@@ -322,8 +324,8 @@ const WhatsNewById = async (req, res) => {
 const getCoursesByCategory = async (req, res) => {
   try {
     const { id } = req.params;
-    const courses = await Course.find({ category: id }).populate('category');
-
+    const courses = await Course.find({ category: id }).populate("category")
+           
     if (!courses || courses.length === 0) {
       return res.status(404).json({ message: 'No courses found for this category' });
     }
@@ -387,7 +389,8 @@ const editDataSave = async (req, res) => {
       id,
       updateData,
       { new: true }
-    ).populate('category');
+    ).populate("category")
+            
 
     if (!updatedCourse) {
       return res.status(404).json({ message: "Record not found." });

@@ -4,7 +4,11 @@ const app = express();
 const path = require('path');
 const dbconnect = require('./Utils/db.config')
 const cors = require('cors');
-app.use(cors());
+const morgan = require('morgan');
+
+
+
+
 
 
 require("dotenv").config()
@@ -12,8 +16,12 @@ const mongoose= require("mongoose");
 const bodyparser = require('body-parser')
 const fileUpload = require('express-fileupload');
 
+
+app.use(morgan("tiny"));
+
 require('dotenv').config();
 app.use(cors());
+// app.use(cors());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 dbconnect();
@@ -45,7 +53,8 @@ const judementRouter = require("./Routes/JudementRoute/judementRoute")
 const blogRouter = require("./Routes/BlogCategoryRoute");
 const DiscountRoute = require("./Routes/DiscountRoute")
 const FAQRoute = require("./Routes/FAQ/faqRoute")
-const subsubRoute = require("./Routes/subsubRoute")
+const subsubRoute = require("./Routes/subsubRoute");
+const syllabusRoute = require("./Routes/SyllabusCategory/SyallbusCategoryRoute")
 // app.use("/uploads", express.static("uploads"));
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
@@ -89,6 +98,8 @@ app.use(bodyparser.json())
  app.use("/discount",DiscountRoute)
  app.use("/faq", FAQRoute);
  app.use("/subsubcategory", subsubRoute)
+ app.use("/syllabuscategory", syllabusRoute)
+
 
 
 

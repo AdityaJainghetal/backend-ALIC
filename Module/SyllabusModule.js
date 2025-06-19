@@ -6,10 +6,11 @@ const SyllabusSchema = new mongoose.Schema({
         type: String,
     },
 
-    category: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Category"
-    },
+   category: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "SyllabusCategory"
+  },
+  
     PDFbrochure: String
 
 

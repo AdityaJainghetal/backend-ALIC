@@ -8,7 +8,12 @@ const BannerSchema = new mongoose.Schema({
     ],
       URL : {
             type: String
-        }
+        },
+    Alternativeimages : [
+            {
+                type:String
+            }
+        ]
 
 })
 

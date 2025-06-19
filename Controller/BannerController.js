@@ -22,6 +22,7 @@ const BannerSave = async (req, res) => {
     const newBanner = new Banner({
       URL,
       images: [uploadResponse.url],
+      Alternativeimages: [uploadResponse.url],
     });
 
     await newBanner.save();

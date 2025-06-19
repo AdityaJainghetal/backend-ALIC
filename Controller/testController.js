@@ -479,34 +479,71 @@ const editDataSave = async (req, res) => {
   }
 };
 
-// Get all courses with test modules
+
+
 const getCourseWithTestModules = async (req, res) => {
   try {
-    const testSeries = await Course.find()
-      .populate("category")
-      .populate("subCategory")
-      .populate("subsubCategory");
-
-    if (!testSeries || testSeries.length === 0) {
-      return res.status(404).json({
-        success: false,
-        message: "No test series found",
-      });
+    // Validate the ID parameter
+    if (!req.params.id.match(/^[0-9a-fA-F]{24}$/)) {
+      return res.status(400).json({ message: "Invalid course ID format" });
     }
 
-    res.status(200).json({
-      success: true,
-      count: testSeries.length,
-      data: testSeries,
-    });
-  } catch (error) {
-    console.error("Test series error:", error);
-    res.status(500).json({
-      success: false,
-      message: error.message,
+    const course = await Course.findById(req.params.id)
+   .populate("category")
+            .populate("subCategory")
+            .populate("subsubCategory"); // Add subcategory population
+
+    if (!course) {
+      return res.status(404).json({ message: "Course not found" });
+    }
+
+    // Optional: Format the response data
+    const responseData = {
+      ...course._doc,
+      category: course.category || null,
+      subCategory: course.subCategory || null
+    };
+
+    res.status(200).json(responseData);
+  } catch (err) {
+    console.error("Error fetching course:", err);
+    res.status(500).json({ 
+      message: "Server Error", 
+      error: err.message,
+      stack: process.env.NODE_ENV === 'development' ? err.stack : undefined
     });
   }
 };
+
+
+// Get all courses with test modules
+// const getCourseWithTestModules = async (req, res) => {
+//   try {
+//     const testSeries = await Course.find()
+//       .populate("category")
+//       .populate("subCategory")
+//       .populate("subsubCategory");
+
+//     if (!testSeries || testSeries.length === 0) {
+//       return res.status(404).json({
+//         success: false,
+//         message: "No test series found",
+//       });
+//     }
+
+//     res.status(200).json({
+//       success: true,
+//       count: testSeries.length,
+//       data: testSeries,
+//     });
+//   } catch (error) {
+//     console.error("Test series error:", error);
+//     res.status(500).json({
+//       success: false,
+//       message: error.message,
+//     });
+//   }
+// };
 
 module.exports = {
   CourseSave,

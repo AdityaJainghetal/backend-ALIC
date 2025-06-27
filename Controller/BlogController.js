@@ -216,6 +216,7 @@ const BlogSave = async (req, res) => {
       title,
       excerpt,
       LastDate,
+      Alttage,
       category,
       Description
     } = req.body;
@@ -252,6 +253,7 @@ const BlogSave = async (req, res) => {
       author,
       title,
       URL,
+      Alttage,
       excerpt,
       BlogCategory: category,
       Description,
@@ -335,6 +337,7 @@ const editDataSave = async (req, res) => {
       URL,
       title,
       excerpt,
+      Alttage,
       Description,
       LastDate,
       category,
@@ -367,6 +370,7 @@ const editDataSave = async (req, res) => {
       author,
       URL,
       title,
+      Alttage,
       excerpt,
       Description,
       images,

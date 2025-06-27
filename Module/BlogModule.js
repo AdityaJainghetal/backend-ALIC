@@ -9,6 +9,9 @@ const BlogSchema = new mongoose.Schema({
       Blog :{
         type:String
       },
+       Alttage:{
+    type:String
+  },
           URL : {
             type: String
         },

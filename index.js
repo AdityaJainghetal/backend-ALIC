@@ -57,6 +57,7 @@ const subsubRoute = require("./Routes/subsubRoute");
 const syllabusRoute = require("./Routes/SyllabusCategory/SyallbusCategoryRoute")
 const RefundRoute = require("./Routes/Refundpolicy/RefundRoute");
 const dynamicRoute = require("./Routes/DynamicRoute/DynamicRoute")
+const OtherCourse = require("./Routes/OtherRoute/OtherRoute")
 // app.use("/uploads", express.static("uploads"));
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
@@ -103,6 +104,7 @@ app.use(bodyparser.json())
  app.use("/syllabuscategory", syllabusRoute)
  app.use("/refund", RefundRoute);
  app.use("/dynamics", dynamicRoute);
+ app.use("/othercourse", OtherCourse)
 
 
 

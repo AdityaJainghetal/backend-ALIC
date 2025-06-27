@@ -1,4 +1,4 @@
-const Course = require("../Module/TestModule"); // Ensure TestModule is the actual model for courses
+const Course = require("../Module/MainModule"); // Ensure TestModule is the actual model for courses
 const imagekit = require("../Utils/imageKit");
 
 // Save Course with all category levels

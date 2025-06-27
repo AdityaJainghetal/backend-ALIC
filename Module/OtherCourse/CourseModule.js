@@ -42,19 +42,7 @@ const courseSchema = new mongoose.Schema({
   TotalStudent: {
     type: Number,
   },
-   category: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Category"
-  },
-   subCategory: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Subcategory"
-  },
-
-     subsubCategory: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Subsubcategory"
-  },
+  
   language: {
     type: String,
   },
@@ -70,13 +58,13 @@ const courseSchema = new mongoose.Schema({
   Review: {
     type: String,
   },
-   homeVisibility: { type: Boolean, default: false },
-  TrainerName: {
-    type: String,
+  TrainerName :{
+    type:String
   },
+ 
   LastDate: { // Changed to Date if it's a date field
     type: Date,
   },
 });
 
-module.exports = mongoose.model("coursedata", courseSchema);
+module.exports = mongoose.model("othercourse", courseSchema);

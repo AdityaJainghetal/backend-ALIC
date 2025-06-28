@@ -11,6 +11,9 @@ const WhyChooseSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
+  altText:{
+    type:String
+  },
   keywordone: {
     type: String,
     trim: true,

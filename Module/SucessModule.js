@@ -12,6 +12,10 @@ const SucessSchema = new mongoose.Schema({
         
       Judicial : {
             type: String
+        },
+
+        altText: {
+            type:String
         }
 
 

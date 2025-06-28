@@ -3,9 +3,9 @@ const imagekit = require("../Utils/imageKit");
 
 const BannerSave = async (req, res) => {
   try {
-    const { URL } = req.body;
+    const { URL, altText } = req.body; // Add altText here
 
-    // Handle uploaded file (assuming single image input field named "images")
+    // Handle uploaded file
     const file = req.files?.images;
 
     if (!file || !URL) {
@@ -14,7 +14,7 @@ const BannerSave = async (req, res) => {
 
     // Upload to ImageKit
     const uploadResponse = await imagekit.upload({
-      file: file.data, // get buffer
+      file: file.data,
       fileName: file.name,
     });
 
@@ -22,7 +22,7 @@ const BannerSave = async (req, res) => {
     const newBanner = new Banner({
       URL,
       images: [uploadResponse.url],
-      Alternativeimages: [uploadResponse.url],
+      altText // Include altText here
     });
 
     await newBanner.save();
@@ -34,7 +34,6 @@ const BannerSave = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
-
 
 const getAllBanner = async (req, res) => {
     try {
@@ -83,9 +82,48 @@ const editDisplay = async (req, res) => {
 };
 
 
+// const editDataSave = async (req, res) => {
+//   try {
+//     const { id, URL } = req.body;
+//     let images = req.body.images;
+
+//     if (!id || !URL) {
+//       return res.status(400).json({ message: "ID and URL are required." });
+//     }
+
+//     // Handle image re-upload if new file provided
+//     if (req.files?.images) {
+//       const file = req.files.images;
+
+//       const uploadResponse = await imagekit.upload({
+//         file: file.data,
+//         fileName: file.name,
+//       });
+
+//       images = [uploadResponse.url]; // Replace with new image
+//     }
+
+//     const updated = await Banner.findByIdAndUpdate(
+//       id,
+//       { URL, images },
+//       { new: true }
+//     );
+
+//     if (!updated) {
+//       return res.status(404).json({ message: "Banner not found." });
+//     }
+
+//     res.status(200).json({ message: "Banner updated", data: updated });
+//   } catch (error) {
+//     console.error("Error updating banner:", error);
+//     res.status(500).json({ message: error.message });
+//   }
+// };
+
+
 const editDataSave = async (req, res) => {
   try {
-    const { id, URL } = req.body;
+    const { id, URL, altText } = req.body; // Add altText here
     let images = req.body.images;
 
     if (!id || !URL) {
@@ -101,12 +139,12 @@ const editDataSave = async (req, res) => {
         fileName: file.name,
       });
 
-      images = [uploadResponse.url]; // Replace with new image
+      images = [uploadResponse.url];
     }
 
     const updated = await Banner.findByIdAndUpdate(
       id,
-      { URL, images },
+      { URL, images, altText }, // Include altText here
       { new: true }
     );
 
@@ -120,7 +158,6 @@ const editDataSave = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-
 
 module.exports = {
   BannerSave,

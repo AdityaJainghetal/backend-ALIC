@@ -24,6 +24,9 @@ const MemberSchema = new mongoose.Schema({
         },
        desciption:{
             type:String
+        },
+        altText:{
+            type:String
         }
 
 

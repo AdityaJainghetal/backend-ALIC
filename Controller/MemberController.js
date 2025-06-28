@@ -217,6 +217,7 @@ const Sucesserstudent = async (req, res) => {
       desciption,
       Teamposition,
       size,
+      altText
     } = req.body;
 
     const parsedSize = typeof size === 'string' ? JSON.parse(size) : size;
@@ -243,6 +244,7 @@ const Sucesserstudent = async (req, res) => {
       email,
       address,
       desciption,
+      altText,
       images: uploadedImages,
       size: parsedSize
     });
@@ -321,6 +323,7 @@ const editDataSave = async (req, res) => {
       email: formData.email || existingMember.email,
       address: formData.address || existingMember.address,
       desciption: formData.desciption || existingMember.desciption,
+      altText : formData.altText || existingMember.altText,
       images: existingMember.images, // Keep existing images by default
       size: formData.size ? JSON.parse(formData.size) : existingMember.size
     };

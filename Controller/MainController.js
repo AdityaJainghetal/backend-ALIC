@@ -11,6 +11,7 @@ const CourseSave = async (req, res) => {
       testmodule,
       CourseDescription,
       LastDate,
+      altText,
       category,
       subcategory,
       subsubcategory,
@@ -52,6 +53,7 @@ const CourseSave = async (req, res) => {
       CourseDescription,
       LastDate: parsedLastDate,
       category,
+      altText,
       subCategory: subcategory,
       subsubCategory: subsubcategory,
       size: parsedSize,
@@ -184,6 +186,32 @@ const editDisplay = async (req, res) => {
   }
 };
 
+const getCourseWithTestModules = async (req, res) => {
+  try {
+    const course = await Course.findById(req.params.id)
+      .populate("category")
+      .populate("subCategory")
+      .populate("subsubCategory");
+
+    if (!course) {
+      return res.status(404).json({ success: false, message: "Course not found" });
+    }
+
+    res.status(200).json({
+      success: true,
+      data: course,
+    });
+  } catch (err) {
+    console.error("Get by ID error:", err);
+    res.status(500).json({
+      success: false,
+      message: "Server Error",
+      error: err.message,
+    });
+  }
+};
+
+
 // Edit course (POST)
 const editDataSave = async (req, res) => {
   try {
@@ -193,6 +221,7 @@ const editDataSave = async (req, res) => {
       testmodule,
       Durations,
       category,
+      altText,
       subCategory,
       subsubCategory,
       CourseDescription,
@@ -210,6 +239,7 @@ const editDataSave = async (req, res) => {
       Price,
       testmodule,
       Durations,
+      altText,
       CourseDescription,
       ...(LastDate && { LastDate: new Date(LastDate) }),
       ...(category && { category }),
@@ -248,33 +278,33 @@ const editDataSave = async (req, res) => {
 };
 
 // Get all courses with test modules
-const getCourseWithTestModules = async (req, res) => {
-  try {
-    const testSeries = await Course.find()
-      .populate("category")
-      .populate("subCategory")
-      .populate("subsubCategory");
+// const getCourseWithTestModules = async (req, res) => {
+//   try {
+//     const testSeries = await Course.find()
+//       .populate("category")
+//       .populate("subCategory")
+//       .populate("subsubCategory");
 
-    if (!testSeries || testSeries.length === 0) {
-      return res.status(404).json({
-        success: false,
-        message: "No test series found",
-      });
-    }
+//     if (!testSeries || testSeries.length === 0) {
+//       return res.status(404).json({
+//         success: false,
+//         message: "No test series found",
+//       });
+//     }
 
-    res.status(200).json({
-      success: true,
-      count: testSeries.length,
-      data: testSeries,
-    });
-  } catch (error) {
-    console.error("Test series error:", error);
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
-  }
-};
+//     res.status(200).json({
+//       success: true,
+//       count: testSeries.length,
+//       data: testSeries,
+//     });
+//   } catch (error) {
+//     console.error("Test series error:", error);
+//     res.status(500).json({
+//       success: false,
+//       message: error.message,
+//     });
+//   }
+// };
 
 module.exports = {
   CourseSave,

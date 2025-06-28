@@ -7,6 +7,7 @@ const Sucesserstudent = async (req, res) => {
       StudentName,
       Judicial,
       size,
+      altText,
 
     } = req.body;
 
@@ -31,6 +32,7 @@ const Sucesserstudent = async (req, res) => {
     const banner = await Banner.create({
       StudentName,
       Judicial,
+      altText,
       images: uploadedImages,
       size: parsedSize
     });
@@ -80,7 +82,7 @@ const editDisplay = async (req, res) => {
 // Save updated success student record
 const editDataSave = async (req, res) => {
   try {
-    const { id, StudentName, Judicial, size } = req.body;
+    const { id, StudentName, Judicial, size ,altText} = req.body;
 
     if (!id) return res.status(400).json({ message: "ID is required." });
 
@@ -100,6 +102,7 @@ const editDataSave = async (req, res) => {
       {
         StudentName,
         Judicial,
+        altText,
         size: size ? (typeof size === "string" ? JSON.parse(size) : size) : undefined,
         images,
       },

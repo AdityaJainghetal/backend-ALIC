@@ -19,7 +19,7 @@ exports.createCourse = async (req, res) => {
       CourseDescription,
       InstructorCourse,
       Review,
-      Alttage,
+      altText,
     
       TrainerName,
       LastDate,
@@ -67,7 +67,7 @@ exports.createCourse = async (req, res) => {
       Durations,
       Lessons,
       URL,
-      Alttage,
+      altText,
       TotalStudent,
       language,
       Certification,

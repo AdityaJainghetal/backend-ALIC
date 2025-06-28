@@ -9,11 +9,11 @@ const BannerSchema = new mongoose.Schema({
       URL : {
             type: String
         },
-    Alternativeimages : [
+      altText : 
             {
                 type:String
             }
-        ]
+        
 
 })
 

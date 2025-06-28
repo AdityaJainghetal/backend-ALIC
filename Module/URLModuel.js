@@ -5,6 +5,9 @@ const VideoSchema = new mongoose.Schema({
      URL : {
             type: String
         },
+        altText:{
+            type:String
+        }
  
 });
 

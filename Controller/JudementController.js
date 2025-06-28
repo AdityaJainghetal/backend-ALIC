@@ -10,6 +10,7 @@ const judegemntcreate = async (req, res) => {
       lastDate,
       publicerName,
       category,
+      altText,
       size, // assuming you want to handle size as in your original code, though your schema doesn't have it
     } = req.body;
 
@@ -49,6 +50,7 @@ const judegemntcreate = async (req, res) => {
       title,
       subTitle,
       description,
+      altText,
       lastDate: parsedLastDate || undefined,
       judementCategory:category,
       publicerName,
@@ -147,7 +149,7 @@ const editDisplay = async (req, res) => {
 };
 const editDataSave = async (req, res) => {
   try {
-    const { id, title, subTitle, description, lastDate, publicerName, category } = req.body;
+    const { id, title, subTitle, description, lastDate, publicerName, category ,altText} = req.body;
 
     if (!id) {
       return res.status(400).json({ message: "ID is required." });
@@ -171,6 +173,7 @@ const editDataSave = async (req, res) => {
       subTitle,
       description,
       publicerName,
+      altText,
       category,
       ...(lastDate && { lastDate: new Date(lastDate) }),
       ...(images.length > 0 && { images }),

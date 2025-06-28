@@ -8,6 +8,10 @@ const MainSchema = new mongoose.Schema({
         }
       
     ], 
+
+    altText:{
+      type:String
+    },
  
 
   Price: {

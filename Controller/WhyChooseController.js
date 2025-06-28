@@ -13,6 +13,7 @@ const SuccesserStudent = async (req, res) => {
       keywordfour,
       keywordfive,
       keywordsix,
+      altText,
       size,
     } = req.body;
 
@@ -42,6 +43,7 @@ const SuccesserStudent = async (req, res) => {
       keywordfour,
       keywordfive,
       keywordsix,
+      altText,
       images: uploadedImages,
       size: parsedSize,
     });
@@ -102,6 +104,7 @@ const editDataSave = async (req, res) => {
       keywordthree,
       keywordfour,
       keywordfive,
+      altText,
       keywordsix,
       size,
     } = req.body;
@@ -133,6 +136,7 @@ const editDataSave = async (req, res) => {
       keywordthree,
       keywordfour,
       keywordfive,
+      altText,
       keywordsix,
       size: parsedSize,
     };

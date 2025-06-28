@@ -5,6 +5,9 @@ const ContactSchema = new mongoose.Schema({
     Title:{
         type:String
     },
+      altText:{
+        type:String
+      },
     images: [
         {
             type: String

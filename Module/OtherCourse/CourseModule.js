@@ -11,6 +11,10 @@ const courseSchema = new mongoose.Schema({
       
     ],
 
+    altText:{
+      type:String
+    },
+
   
   Semester: {
     type: Number,

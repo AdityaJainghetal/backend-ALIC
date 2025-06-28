@@ -3,12 +3,13 @@ const Member = require("../Module/DiscountModule"); // Adjust the path as needed
 // Create a new Member
 exports.createMember = async (req, res) => {
     try {
-        const { title, desciption, limited, limitedoffer } = req.body;
+        const { title, desciption, limited, limitedoffer,altText } = req.body;
         
         const newMember = new Member({
             title,
             desciption,
             limited,
+            altText,
             limitedoffer
         });
 
@@ -69,7 +70,7 @@ exports.getMemberById = async (req, res) => {
 // Update a Member
 exports.updateMember = async (req, res) => {
     try {
-        const { title, desciption, limited, limitedoffer } = req.body;
+        const { title, desciption, limited, limitedoffer ,altText} = req.body;
         
         const updatedMember = await Member.findByIdAndUpdate(
             req.params.id,
@@ -77,7 +78,8 @@ exports.updateMember = async (req, res) => {
                 title,
                 desciption,
                 limited,
-                limitedoffer
+                limitedoffer,
+                altText
             },
             { new: true, runValidators: true }
         );

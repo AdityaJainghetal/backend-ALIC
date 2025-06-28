@@ -10,6 +10,8 @@ const ContactSave = async (req, res) => {
       Description,
       Location,
       Cost,
+      altText,
+
       Slot,
       subTitle
     } = req.body;
@@ -42,6 +44,7 @@ const ContactSave = async (req, res) => {
       Title,
       images: uploadedImages,
       Time,
+      altText,
       StartDate: parsedStartDate,
       Description,
       Location,
@@ -175,6 +178,8 @@ const editDataSave = async (req, res) => {
       StartDate,
       Description,
       Location,
+      altText,
+
       Cost,
       Slot,
       subTitle
@@ -202,6 +207,8 @@ const editDataSave = async (req, res) => {
       Time,
       Description,
       Location,
+      altText,
+
       Cost: Number(Cost),
       Slot: Number(Slot),
       subTitle

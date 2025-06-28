@@ -15,6 +15,10 @@ const preSchema = new mongoose.Schema({
   testmodule: {
     type: String,
   },
+
+  altText:{
+    type:String
+  },
   Durations: {
     type: String,
   },

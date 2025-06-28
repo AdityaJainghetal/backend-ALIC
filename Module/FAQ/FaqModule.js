@@ -5,6 +5,9 @@ const FAQSchema = new mongoose.Schema({
         },
       response : {
             type: String
+        },
+        altText: {
+            type:String
         }
 
 })

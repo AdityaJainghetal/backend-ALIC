@@ -4,6 +4,10 @@ const MemberSchema = new mongoose.Schema({
        title : {
             type: String
         },
+
+        altText:{
+          type:String
+        },
     
        desciption:{
             type:String

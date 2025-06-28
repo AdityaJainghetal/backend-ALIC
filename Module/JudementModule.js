@@ -28,6 +28,10 @@ const judgementSchema = new mongoose.Schema({
   lastDate: {
     type: Date,
   },
+
+  altText: {
+    type:String
+  }
 });
 
 module.exports = mongoose.model("Judgement", judgementSchema);
